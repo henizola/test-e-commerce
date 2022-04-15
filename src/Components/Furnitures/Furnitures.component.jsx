@@ -19,13 +19,7 @@ const Furnitures = ({ filterString }) => {
   const { removeFromCart } = useContext(CartContext);
 
   const addToCart = (product) => {
-    if (cart.find((c) => c.name === product.name)) {
-      let index = cart.findIndex((c) => c.name === product.name);
-      let temp = cart;
-      // temp.splice(1, index);
-
-      setCart(temp);
-    } else setCart([...cart, product]);
+setCart([...cart, product]);
   };
 
   return (
@@ -100,8 +94,8 @@ const Furnitures = ({ filterString }) => {
                     .toLowerCase()
                     .includes(filterString.toLowerCase())
                 )
-                .map((prod) => (
-                  <Grid item xs={3} lg={3}>
+                .map((prod, index) => (
+                  <Grid item xs={3} lg={3} key={index}>
                     <Item>
                       <img src={prod.image} alt="" />
                       {prod.discount && (

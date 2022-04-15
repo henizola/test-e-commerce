@@ -1,4 +1,4 @@
-import { ClickAwayListener, Divider } from "@mui/material";
+import {  Divider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import * as React from "react";
@@ -7,8 +7,8 @@ import { Container, Footer } from "./cart.styles";
 import CartItem from "./CartProduct.component";
 
 export default function CartDrawer({ state, toggleDrawer }) {
-  const { cart, setCart } = React.useContext(CartContext);
-  const { removeFromCart, getTotalPrice } = React.useContext(CartContext);
+  const { cart } = React.useContext(CartContext);
+  const {  getTotalPrice } = React.useContext(CartContext);
 
   const list = (anchor) => (
     <Box
@@ -16,7 +16,7 @@ export default function CartDrawer({ state, toggleDrawer }) {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-    >
+    >Ø
       <button
         onClick={toggleDrawer("right", false, true)}
         style={{
@@ -39,8 +39,8 @@ export default function CartDrawer({ state, toggleDrawer }) {
         </span>
       </button>
       <Container>
-        {cart.map((product) => (
-          <CartItem product={product} toggleDrawer={toggleDrawer} />
+        {cart.map((product, index) => (
+          <CartItem product={product} toggleDrawer={toggleDrawer} key={index} />
         ))}
       </Container>
       <Footer>

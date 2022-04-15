@@ -6,7 +6,6 @@ import { CartContext } from "../../Context/context";
 import { CartProduct } from "./cart.styles";
 
 const CartItem = ({ product, toggleDrawer }) => {
-  const { cart, setCart } = useContext(CartContext);
   const { removeFromCart } = useContext(CartContext);
 
   const { increaseQuantity, decreaseQuantity } = React.useContext(CartContext);

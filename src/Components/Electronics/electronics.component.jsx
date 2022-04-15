@@ -13,17 +13,10 @@ import { Container, Item } from "./electronics.styles";
 import discounts from "../../assets/discount.png";
 
 const Electronics = ({ filterString }) => {
-  const { cart, setCart } = useContext(CartContext);
-  const { removeFromCart } = useContext(CartContext);
+  const { cart, setCart,removeFromCart } = useContext(CartContext);
 
   const addToCart = (product) => {
-    if (cart.find((c) => c.name === product.name)) {
-      let index = cart.findIndex((c) => c.name === product.name);
-      let temp = cart;
-      // temp.splice(1, index);
-
-      setCart(temp, "here");
-    } else setCart([...cart, product]);
+  setCart([...cart, product]);
   };
   return (
     <Container>
@@ -97,8 +90,8 @@ const Electronics = ({ filterString }) => {
                     .toLowerCase()
                     .includes(filterString.toLowerCase())
                 )
-                .map((prod) => (
-                  <Grid item xs={3} lg={3}>
+                .map((prod, index) => (
+                  <Grid item xs={3} lg={3} key={index}>
                     <Item>
                       <img src={prod.image} alt="" />
                       {prod.discount && (
@@ -114,7 +107,7 @@ const Electronics = ({ filterString }) => {
                       </div>
                       {cart.find((p) => p.name === prod.name) ? (
                         <button
-                          onClick={() => addToCart(prod)}
+                        onClick={() => removeFromCart(prod)}
                           className="added"
                         >
                           Added <TiTick />

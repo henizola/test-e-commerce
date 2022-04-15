@@ -27,11 +27,9 @@ export default function Navigation() {
     setValue(newValue);
   };
 
-  const { cart, setCart } = useContext(CartContext);
-  const { removeFromCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   const toggleDrawer = (anchor, open, permit) => (event) => {
-    console.log(event, "event here");
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")

@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react";
-import { products } from "../Utils/datas.util";
 
 export const CartContext = createContext();
 
@@ -17,7 +16,7 @@ export const CartProvider = (props) => {
     let tot = 0;
 
     cart.map((prod) => {
-      tot += prod.price * prod.quantity;
+     return tot += prod.price * prod.quantity;
     });
 
     return tot.toLocaleString(undefined, {
@@ -64,16 +63,3 @@ export const CartProvider = (props) => {
     </CartContext.Provider>
   );
 };
-
-// const filterProducts = (e) => {
-//   let filterd = [];
-//   console.log(e, "here is teh search string", "");
-//   products.map((product) => {
-//     if (product.name.toLowerCase().includes(e.toLowerCase())) {
-//       filterd.push(product);
-//     }
-//   });
-//   if (e === "") {
-//     setProductList(products);
-//   } else setProductList(filterd);
-// };

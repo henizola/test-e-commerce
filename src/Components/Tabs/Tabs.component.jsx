@@ -8,9 +8,8 @@ import * as React from "react";
 import InputBase from "@mui/material/InputBase";
 import { Container } from "./Tabs.styles";
 
-import { useContext, useEffect } from "react";
+import {  useEffect } from "react";
 
-import { CartContext } from "../../Context/context";
 
 export default function CenteredTabs({
   value,
@@ -18,9 +17,7 @@ export default function CenteredTabs({
   setFilterString,
   filterString,
 }) {
-  const { filterProducts, productList } = useContext(CartContext);
 
-  const [searchString, setSearchString] = React.useState("");
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -74,7 +71,7 @@ export default function CenteredTabs({
   useEffect(() => {
     // Update the document title using the browser API
     setFilterString("");
-  }, [value]);
+  }, [value,setFilterString]);
 
   return (
     <Container>
@@ -87,7 +84,7 @@ export default function CenteredTabs({
           onChange={handleFilter}
           value={filterString}
           key={123}
-          autoFocus="autoFocus"
+          autoFocus={true}
         />
       </Search>
       <Box

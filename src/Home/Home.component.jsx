@@ -12,8 +12,8 @@ const HomePage = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(value);
   };
+
   return (
     <Container>
       <CenteredTabs
