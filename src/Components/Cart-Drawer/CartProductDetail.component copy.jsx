@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { CartContext } from "../../Context/context";
 import { CartProduct } from "./cart.styles";
 
-const CartItem = ({ product, toggleDrawer }) => {
+const CartItemDetail = ({ product, toggleDrawer }) => {
   const { removeFromCart } = useContext(CartContext);
 
   const { increaseQuantity, decreaseQuantity } = React.useContext(CartContext);
@@ -13,11 +13,13 @@ const CartItem = ({ product, toggleDrawer }) => {
   return (
     <CartProduct>
       <Grid container spacing={5}>
-        <Grid item xs={4} lg={4}>
+        <Grid item xs={4} lg={4} style={{ position: "relative" }}>
+          <p className="quantityy">{product.quantity}</p>
           <img
             src={product.image}
             alt={product.name}
-            className="cartProductImage"
+            className="cartProductImage "
+            style={{ position: "relative!important" }}
             onClick={() => toggleDrawer("right", true)}
           />
         </Grid>
@@ -34,32 +36,15 @@ const CartItem = ({ product, toggleDrawer }) => {
             <p>{product.name}</p>
             <p>{product.description}</p>
           </div>
-
-          <p>
-            ${" "}
-            {product.price.toLocaleString(undefined, {
-              maximumFractionDigits: 2,
-            })}
-          </p>
         </Grid>
         <Grid item xs={3} lg={3}>
-          <button className="remove" onClick={() => removeFromCart(product)}>
-            x
-          </button>
           <div className="quant">
-            <button
-              className="remove"
-              onClick={() => decreaseQuantity(product)}
-            >
-              -
-            </button>
-            <p>{product.quantity}</p>
-            <button
-              className="remove"
-              onClick={() => increaseQuantity(product)}
-            >
-              +
-            </button>
+            <p>
+              ${" "}
+              {product.price.toLocaleString(undefined, {
+                maximumFractionDigits: 2,
+              })}
+            </p>
           </div>
         </Grid>
       </Grid>
@@ -68,4 +53,4 @@ const CartItem = ({ product, toggleDrawer }) => {
   );
 };
 
-export default CartItem;
+export default CartItemDetail;

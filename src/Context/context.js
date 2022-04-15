@@ -16,7 +16,19 @@ export const CartProvider = (props) => {
     let tot = 0;
 
     cart.map((prod) => {
-     return tot += prod.price * prod.quantity;
+      return (tot += prod.price * prod.quantity);
+    });
+
+    return tot.toLocaleString(undefined, {
+      maximumFractionDigits: 2,
+    });
+  };
+
+  const getTotalPriceTaxed = () => {
+    let tot = 50;
+
+    cart.map((prod) => {
+      return (tot += prod.price * prod.quantity);
     });
 
     return tot.toLocaleString(undefined, {
@@ -57,6 +69,7 @@ export const CartProvider = (props) => {
         getTotalPrice: getTotalPrice,
         filterProducts: filterProducts,
         filterString: filterString,
+        getTotalPriceTaxed: getTotalPriceTaxed,
       }}
     >
       {props.children}

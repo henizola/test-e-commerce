@@ -8,8 +8,7 @@ import * as React from "react";
 import InputBase from "@mui/material/InputBase";
 import { Container } from "./Tabs.styles";
 
-import {  useEffect } from "react";
-
+import { useEffect } from "react";
 
 export default function CenteredTabs({
   value,
@@ -17,8 +16,6 @@ export default function CenteredTabs({
   setFilterString,
   filterString,
 }) {
-
-
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: "50px",
@@ -71,7 +68,7 @@ export default function CenteredTabs({
   useEffect(() => {
     // Update the document title using the browser API
     setFilterString("");
-  }, [value,setFilterString]);
+  }, [value, setFilterString]);
 
   return (
     <Container>
@@ -89,7 +86,7 @@ export default function CenteredTabs({
       </Search>
       <Box
         sx={{ width: "100%" }}
-        style={{ backgroundColor: "rgb(245, 250, 255) !important" }}
+        style={{ backgroundColor: "rgb(245,250,255) !important" }}
       >
         <Tabs value={value} onChange={handleChange} centered>
           <Tab label="Furnitures" />

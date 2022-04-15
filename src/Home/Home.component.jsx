@@ -2,6 +2,7 @@ import Electronics from "../Components/Electronics/electronics.component";
 import Furnitures from "../Components/Furnitures/Furnitures.component";
 import CenteredTabs from "../Components/Tabs/Tabs.component";
 import { Container } from "./Home.styles";
+import Navigation from ".././Components/Navigation/Navigation.component";
 
 import React, { useState } from "react";
 
@@ -16,6 +17,8 @@ const HomePage = () => {
 
   return (
     <Container>
+      <Navigation />
+
       <CenteredTabs
         value={value}
         handleChange={handleChange}

@@ -1,14 +1,18 @@
-import {  Divider } from "@mui/material";
+import { Divider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import * as React from "react";
 import { CartContext } from "../../Context/context";
 import { Container, Footer } from "./cart.styles";
+import { useNavigate } from "react-router-dom";
+
 import CartItem from "./CartProduct.component";
 
 export default function CartDrawer({ state, toggleDrawer }) {
   const { cart } = React.useContext(CartContext);
-  const {  getTotalPrice } = React.useContext(CartContext);
+  const { getTotalPrice } = React.useContext(CartContext);
+
+  let navigate = useNavigate();
 
   const list = (anchor) => (
     <Box
@@ -16,7 +20,7 @@ export default function CartDrawer({ state, toggleDrawer }) {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-    >Ø
+    >
       <button
         onClick={toggleDrawer("right", false, true)}
         style={{
@@ -39,12 +43,12 @@ export default function CartDrawer({ state, toggleDrawer }) {
         </span>
       </button>
       <Container>
+        <Divider />
         {cart.map((product, index) => (
           <CartItem product={product} toggleDrawer={toggleDrawer} key={index} />
         ))}
       </Container>
       <Footer>
-        <Divider />
         <div className="price">
           <h4>Total INCL TAX</h4>
           <h4>$ {getTotalPrice()}</h4>
@@ -58,7 +62,9 @@ export default function CartDrawer({ state, toggleDrawer }) {
           >
             Continue Shoping
           </button>
-          <button className="filled">Proccess To Checkout</button>
+          <button className="filled" onClick={() => navigate("/checkout")}>
+            Proccess To Checkout
+          </button>
         </div>
       </Footer>
     </Box>

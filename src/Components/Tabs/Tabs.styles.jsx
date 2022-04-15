@@ -12,7 +12,7 @@ export const Container = styled.div`
   svg {
     fill: gray !important;
   }
-  background-color: rgb(245, 250, 255) !important;
+  background-color: rgb(240, 240, 240) !important;
 `;
 
 export const SearchContainer = styled.div`
