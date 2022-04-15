@@ -1,0 +1,51 @@
+body{
+    margin:0;
+    padding:0 25px;
+    font-family: 'Montserrat'!important;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color:#000!important;
+}
+.css-1aquho2-MuiTabs-indicator {
+    background-color: #000!important;
+
+
+  border-radius: 15px!important;
+}
+
+.MuiButtonBase-root{
+    padding:0!important;
+    margin:0 10px!important;
+    width: fit-content!important;
+}
+body{
+    background-color: rgb(245, 250, 255);
+}
+
+.numbers {
+    background: rgb(0, 255, 246);
+    background: linear-gradient(
+      153deg,
+      rgba(0, 255, 246, 1) 0%,
+      rgba(111, 9, 121, 1) 100%
+    );
+    width: 20px !important;
+    height: 15px;
+    border-radius: 30px;
+    position: absolute;
+    font-size: 12px;
+    text-align: center;
+    padding: 3px 0;
+    right: 10px;
+    top: 3px;
+   
+  }
+
+  .MuiDrawer-paper{
+      z-index: 99999999;
+  }
+
+  button{
+      cursor: pointer;
+  }
