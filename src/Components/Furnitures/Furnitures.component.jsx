@@ -7,7 +7,7 @@ import CustomizedRadios from "../../Components/custom-radio/custom-radio.compone
 import { products } from "../../Utils/datas.util";
 import { Container, Item } from "./Furnitures.styles";
 
-import { useContext } from "react";
+import { useContext ,useState} from "react";
 
 import { CartContext } from "../../Context/context";
 import { TiTick } from "react-icons/ti";
@@ -18,9 +18,78 @@ const Furnitures = ({ filterString }) => {
   const { cart, setCart } = useContext(CartContext);
   const { removeFromCart } = useContext(CartContext);
 
+  const [sorts,setSort]=useState('')
+
   const addToCart = (product) => {
 setCart([...cart, product]);
   };
+
+const [filters,setFilters]=useState([])
+
+  const handdleFilter=(e)=>{
+  
+    if(filters.find(fill=>fill===e.target.name)){
+      let temp = [...filters];
+      let index = filters.findIndex((p)=>p===e.target.name)
+      temp.splice(index,1);
+      console.log(temp)
+      setFilters([...temp])
+      console.log('im clled')
+    }
+    else
+    setFilters([...filters,e.target.name])
+
+  }
+
+
+function compare( a, b ) {
+if(sorts==='asc'){
+  if ( a.price < b.price){
+    return -1;
+  }
+  if ( a.price > b.price){
+    return 1;
+  }
+  return 0;
+  
+}
+else if(sorts==='dsc'){
+  if ( a.price > b.price){
+    return -1;
+  }
+  if ( a.price < b.price){
+    return 1;
+  }
+  return 0;
+  
+}
+
+else if(sorts==='seller'){
+  if ( a.bestSelling){
+    return -1;
+  }
+  if ( !a.bestSelling){
+    return 1;
+  }
+  return 0;
+  
+}
+else if(sorts==='discount'){
+  if ( a.discount){
+    return -1;
+  }
+  if ( !a.discount){
+    return 1;
+  }
+  return 0;
+  
+}
+
+ 
+}
+
+
+
 
   return (
     <Container>
@@ -31,54 +100,49 @@ setCart([...cart, product]);
           <Divider />
           <ul>
             <li>
-              <BpCheckbox lable={"Sofas"} />
+              <BpCheckbox lable={"Sofas"} name='sofa' onChange={handdleFilter} />
               <span>Sofas</span>
             </li>
             <li>
-              <BpCheckbox />
+              <BpCheckbox name='bed' onChange={handdleFilter} />
               <span>Beds</span>
             </li>
             <li>
-              <BpCheckbox />
+              <BpCheckbox name='table' onChange={handdleFilter}  />
               <span>Tables</span>
             </li>
             <li>
-              <BpCheckbox />
+              <BpCheckbox  name='stand' onChange={handdleFilter} />
               <span>Tv Stands</span>
             </li>
             <li>
-              <BpCheckbox />
+              <BpCheckbox name='wardrobe' onChange={handdleFilter} />
               <span>Wardrobes</span>
             </li>
             <li>
-              <BpCheckbox />
+              <BpCheckbox name='cabinate' onChange={handdleFilter} />
               <span>Cabinates</span>
             </li>{" "}
             <li>
-              <BpCheckbox />
+              <BpCheckbox name='dresser' onChange={handdleFilter} />
               <span>Dressers</span>
             </li>
             <li>
-              <BpCheckbox />
+              <BpCheckbox name='other' onChange={handdleFilter} />
               <span>Other</span>
             </li>
           </ul>
           <p>Sort</p>
           <Divider />
+          <form>
+
           <ul>
-            <li>
-              <CustomizedRadios lable="Discount" />
+            <li> 
+              <CustomizedRadios setSort={setSort}  />
             </li>
-            <li>
-              <CustomizedRadios lable="Best Selling" />
-            </li>{" "}
-            <li>
-              <CustomizedRadios lable="Price ASC" />
-            </li>{" "}
-            <li>
-              <CustomizedRadios lable="Price DSC" />
-            </li>{" "}
+          
           </ul>
+          </form>
         </Grid>
         <Grid item xs={9} lg={9.5} style={{ marginTop: "30px" }}>
           <Box sx={{ width: "100%" }}>
@@ -87,13 +151,13 @@ setCart([...cart, product]);
               rowSpacing={{ xs: 1, sm: 2, md: 3 }}
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
-              {products
+              {filters.length>0&& products
                 .filter((p) => p.catagorie === "fur")
                 .filter((product) =>
                   product.name
                     .toLowerCase()
                     .includes(filterString.toLowerCase())
-                )
+                ).filter(item => filters.includes(item.type)).sort( compare )
                 .map((prod, index) => (
                   <Grid item xs={3} lg={3} key={index}>
                     <Item>
@@ -124,6 +188,44 @@ setCart([...cart, product]);
                     </Item>
                   </Grid>
                 ))}
+                   {filters.length===0&& products
+                .filter((p) => p.catagorie === "fur")
+                .filter((product) =>
+                  product.name
+                    .toLowerCase()
+                    .includes(filterString.toLowerCase())
+                ).sort( compare )
+                .map((prod, index) => (
+                  <Grid item xs={3} lg={3} key={index}>
+                    <Item>
+                      <img src={prod.image} alt="" />
+                      {prod.discount && (
+                        <img src={discounts} alt="" className="discount" />
+                      )}
+                      <div className="desc">
+                        <span>{prod.name}</span>
+                        <span>
+                          {prod.price.toLocaleString(undefined, {
+                            maximumFractionDigits: 2,
+                          })}
+                        </span>
+                      </div>
+                      {cart.find((p) => p.name === prod.name) ? (
+                        <button
+                          onClick={() => removeFromCart(prod)}
+                          className="added"
+                        >
+                          Added <TiTick />
+                        </button>
+                      ) : (
+                        <button onClick={() => addToCart(prod)}>
+                          Add To Cart <ImArrowUpRight2 className="hover" />
+                        </button>
+                      )}
+                    </Item>
+                  </Grid>
+                ))}
+           
             </Grid>
           </Box>
         </Grid>

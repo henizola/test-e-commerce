@@ -4,7 +4,7 @@ export const products = [
     price: 17000,
     discount: true,
     catagorie: "elec",
-    type: "smart phone",
+    type: "phone",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: false,
     image:
@@ -16,7 +16,7 @@ export const products = [
     price: 15000,
     discount: false,
     catagorie: "elec",
-    type: "smart phone",
+    type: "phone",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: true,
     image:
@@ -28,7 +28,7 @@ export const products = [
     price: 55000,
     discount: false,
     catagorie: "elec",
-    type: "smart phone",
+    type: "phone",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: true,
     image:
@@ -53,7 +53,7 @@ export const products = [
     price: 17000,
     discount: false,
     catagorie: "elec",
-    type: "smart phone",
+    type: "phone",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: false,
     image:
@@ -65,7 +65,7 @@ export const products = [
     price: 15000,
     discount: false,
     catagorie: "elec",
-    type: "smart phone",
+    type: "phone",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: true,
     image:
@@ -77,7 +77,7 @@ export const products = [
     price: 55000,
     discount: true,
     catagorie: "elec",
-    type: "smart phone",
+    type: "phone",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: true,
     image:
@@ -127,7 +127,7 @@ export const products = [
     price: 17000,
     discount: false,
     catagorie: "fur",
-    type: "beds",
+    type: "bed",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: false,
     image:
@@ -139,7 +139,7 @@ export const products = [
     price: 22000,
     discount: true,
     catagorie: "fur",
-    type: "cabinates",
+    type: "cabinate",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: false,
     image:
@@ -153,7 +153,7 @@ export const products = [
     price: 1200,
     discount: true,
     catagorie: "fur",
-    type: "tables",
+    type: "table",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: true,
     image:
@@ -177,9 +177,9 @@ export const products = [
     price: 17000,
     discount: false,
     catagorie: "fur",
-    type: "Bed",
+    type: "bed",
     description: "lorem ipsum dir amet lorem  ",
-    bestSelling: false,
+    bestSelling: true,
     image:
       "https://i.pinimg.com/564x/16/5b/43/165b43c8ff834e00139473ef6d3a5bc5.jpg",
     quantity: 1,
@@ -189,7 +189,7 @@ export const products = [
     price: 22000,
     discount: true,
     catagorie: "fur",
-    type: "cabinates",
+    type: "cabinate",
     description: "lorem ipsum dir amet lorem  ",
     bestSelling: false,
     image:
